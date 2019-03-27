@@ -27,5 +27,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation project(path: ':libtwo')
     implementation project(path: ':libone')
-//    implementation 'com.github.xujichang:JitpackTest:1.0.3'
+    implementation 'com.github.xujichang:JitpackTest:1.0.4'
 }

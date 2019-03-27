@@ -32,36 +32,44 @@ dependencies {
 }
 group = 'com.github.xujichang'
 version = '1.0.0'
-
-task sourceJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier 'sources'
-}
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    options.encoding "UTF-8"
-    options.charSet 'UTF-8'
-    failOnError = false
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.javaDirectories
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
+artifacts {
+    archives sourcesJar
 }
-task classesJar(type: Jar) {
-    from "$buildDir/intermediates/classes/release"
-}
-publishing {
-    publications {
-        mavenAar(MavenPublication) {
-            groupId group
-            artifactId 'libone'
-            version version
-            artifact(sourceJar)
-            artifact(javadocJar)
-            artifact(classesJar)
-            from components.android
-        }
-    }
-}
+//
+//task sourceJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier 'sources'
+//}
+//task javadoc(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    options.encoding "UTF-8"
+//    options.charSet 'UTF-8'
+//    failOnError = false
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//}
+//
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+//task classesJar(type: Jar) {
+//    from "$buildDir/intermediates/classes/release"
+//}
+//publishing {
+//    publications {
+//        mavenAar(MavenPublication) {
+//            groupId group
+//            artifactId 'libone'
+//            version version
+//            artifact(sourceJar)
+//            artifact(javadocJar)
+//            artifact(classesJar)
+//            from components.android
+//        }
+//    }
+//}
