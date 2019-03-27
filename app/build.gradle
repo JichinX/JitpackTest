@@ -25,7 +25,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation project(path: ':libtwo')
-    implementation project(path: ':libone')
-    implementation 'com.github.xujichang:JitpackTest:1.0.4'
+//    implementation project(path: ':libtwo')
+//    implementation project(path: ':libone')
+//    implementation 'com.github.xujichang:JitpackTest:1.0.4'
+//    implementation 'com.github.xujichang.JitpackTest:libone:1.0.7'
+//    implementation 'com.github.xujichang.JitpackTest:libtwo:1.0.7'
 }
