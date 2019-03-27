@@ -1,6 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'digital.wup.android-maven-publish'
-
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -30,54 +28,4 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }
-group = 'com.github.xujichang'
-version = '3.0.0'
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from android.sourceSets.main.javaDirectories
-}
-
-publishing {
-    publications {
-        mavenAar(MavenPublication) {
-            groupId group
-            artifactId 'libone'
-            version version
-            artifact(sourcesJar)
-            from components.android
-        }
-    }
-}
-//
-//task sourceJar(type: Jar) {
-//    from android.sourceSets.main.java.srcDirs
-//    classifier 'sources'
-//}
-//task javadoc(type: Javadoc) {
-//    source = android.sourceSets.main.java.srcDirs
-//    options.encoding "UTF-8"
-//    options.charSet 'UTF-8'
-//    failOnError = false
-//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-//}
-//
-//task javadocJar(type: Jar, dependsOn: javadoc) {
-//    classifier = 'javadoc'
-//    from javadoc.destinationDir
-//}
-//task classesJar(type: Jar) {
-//    from "$buildDir/intermediates/classes/release"
-//}
-//publishing {
-//    publications {
-//        mavenAar(MavenPublication) {
-//            groupId group
-//            artifactId 'libone'
-//            version version
-//            artifact(sourceJar)
-//            artifact(javadocJar)
-//            artifact(classesJar)
-//            from components.android
-//        }
-//    }
-//}
+apply from:'../jitpack.gradle'

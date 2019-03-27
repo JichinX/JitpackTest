@@ -1,4 +1,4 @@
-package me.xujichangjitpacktest;
+package me.jitpacktest;
 
 import android.content.Context;
 

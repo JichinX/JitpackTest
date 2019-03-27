@@ -1,4 +1,4 @@
-package me.xujichangjitpacktest;
+package me.xujichang.jitpacktest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
