@@ -17,18 +17,18 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
-task classesJar(type: Jar) {
-    from "$buildDir/intermediates/classes/release"
-}
+//task classesJar(type: Jar) {
+//    from "$buildDir/intermediates/classes/release"
+//}
 publishing {
     publications {
         mavenAar(MavenPublication) {
             groupId group
-            artifactId 'library'
+            artifactId project.name
             version version
             artifact(sourceJar)
             artifact(javadocJar)
-            artifact(classesJar)
+//            artifact(classesJar)
             from components.android
         }
     }
