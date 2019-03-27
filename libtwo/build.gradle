@@ -33,7 +33,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }
 group = 'com.github.xujichang'
-version = '1.0.0'
+version = '2.0.0'
 task sourcesJar(type: Jar) {
     classifier = 'sources'
     from android.sourceSets.main.javaDirectories
@@ -41,4 +41,23 @@ task sourcesJar(type: Jar) {
 
 artifacts {
     archives sourcesJar
+}
+if (android.productFlavors.size() > 0) {
+    android.libraryVariants.all { variant ->
+
+        if (variant.name.toLowerCase().contains("debug")) {
+            return
+        }
+
+        def bundleTask = tasks["bundle${variant.name.capitalize()}Aar"]
+
+        artifacts {
+            archives(bundleTask.archivePath) {
+                classifier variant.flavorName
+                builtBy bundleTask
+                name = project.name
+            }
+        }
+
+    }
 }
